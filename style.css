@@ -1,0 +1,27 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #121213;
+  color: white;
+}
+
+.container {
+  max-width: 900px;
+  margin: auto;
+  padding: 20px;
+}
+
+h1 {
+  text-align: center;
+}
+
+.subtitle {
+  text-align: center;
+  opacity: 0.8;
+}
+
+#loading {
+  text-align: center;
+  margin: 20px 0;
+  font-size: 18px;
+}
