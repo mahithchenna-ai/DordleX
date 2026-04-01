@@ -36,3 +36,38 @@ async function fetchMeaning(word) {
 
   return meaning;
 }
+
+// Display words and meanings on webpage
+async function renderWords() {
+  const loadingText = document.getElementById("loading");
+  const wordsContainer = document.getElementById("words-container");
+
+  loadingText.style.display = "block";
+
+  try {
+    const words = await fetchWords();
+
+    let cardsHTML = "";
+
+    for (let i = 0; i < words.length; i++) {
+      const word = words[i];
+      const meaning = await fetchMeaning(word);
+
+      cardsHTML += `
+        <div class="card">
+          <h3>${word.toUpperCase()}</h3>
+          <p>${meaning}</p>
+        </div>
+      `;
+    }
+
+    wordsContainer.innerHTML = cardsHTML;
+  } catch (error) {
+    wordsContainer.innerHTML = "<p>Failed to load words.</p>";
+  }
+
+  loadingText.style.display = "none";
+}
+
+// Start the app
+renderWords();
