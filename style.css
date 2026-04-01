@@ -25,3 +25,21 @@ h1 {
   margin: 20px 0;
   font-size: 18px;
 }
+
+#words-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.card {
+  background: #1f1f1f;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(255,255,255,0.05);
+}
+
+.card h3 {
+  margin-top: 0;
+  text-transform: uppercase;
+}
