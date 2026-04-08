@@ -8,14 +8,51 @@
 </head>
 <body>
   <div class="container">
-    <h1>DordleX</h1>
-    <p class="subtitle">API-powered dual word puzzle</p>
+    
+    <!-- HEADER -->
+    <header>
+      <h1>DordleX</h1>
+      <p class="subtitle">API-powered dual word puzzle</p>
+    </header>
 
+    <!-- GAME INFO -->
+    <div class="game-info">
+      <span id="rounds">Rounds Played: 0</span>
+      <button id="reset-btn">Reset</button>
+    </div>
+
+    <!-- LOADING -->
     <div id="loading">Loading today's words...</div>
 
-    <div id="words-container"></div>
+    <!-- GAME AREA -->
+    <div id="game" class="hidden">
+      
+      <!-- TWO WORD BOARDS -->
+      <div class="boards">
+        <div class="board" id="board1"></div>
+        <div class="board" id="board2"></div>
+      </div>
+
+      <!-- KEYBOARD -->
+      <div class="keyboard" id="keyboard"></div>
+      
+
+    </div>
+
   </div>
-  
+
+  <!-- RESULT MODAL -->
+  <div id="result-modal" class="modal hidden">
+    <div class="modal-content">
+  <h2 id="result-text"></h2>
+
+  <!-- meanings go here -->
+  <div id="meanings"></div>
+
+  <button id="play-again-btn">Play Again</button>
+</div>
+  </div>
+
   <script src="script.js"></script>
 </body>
 </html>

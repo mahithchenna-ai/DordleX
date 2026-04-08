@@ -6,40 +6,217 @@ body {
 }
 
 .container {
-  max-width: 900px;
+  max-width: 1000px;
   margin: auto;
   padding: 20px;
+  text-align: center;
 }
 
+/* HEADER */
 h1 {
-  text-align: center;
+  font-size: 3rem;
+  margin-bottom: 5px;
 }
 
 .subtitle {
-  text-align: center;
-  opacity: 0.8;
+  opacity: 0.7;
+  margin-bottom: 20px;
 }
 
-#loading {
-  text-align: center;
-  margin: 20px 0;
+/* GAME INFO */
+.game-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+#rounds {
   font-size: 18px;
+  font-weight: bold;
 }
 
-#words-container {
+button {
+  cursor: pointer;
+  border: none;
+}
+
+/* LOADING */
+#loading {
+  font-size: 20px;
+  margin: 30px 0;
+}
+
+/* HIDDEN */
+.hidden {
+  display: none;
+}
+
+/* BOARDS */
+.boards {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  margin-bottom: 30px;
+  flex-wrap: wrap;
+}
+
+.board {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(5, 60px);
+  gap: 8px;
 }
 
-.card {
+.tile {
+  width: 60px;
+  height: 60px;
+  border: 2px solid #3a3a3c;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 28px;
+  font-weight: bold;
+  text-transform: uppercase;
+  background: #121213;
+  transition: 0.3s;
+}
+
+.correct {
+  background: #538d4e;
+  border-color: #538d4e;
+}
+
+.present {
+  background: #b59f3b;
+  border-color: #b59f3b;
+}
+
+.absent {
+  background: #3a3a3c;
+  border-color: #3a3a3c;
+}
+
+/* KEYBOARD */
+.keyboard {
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  gap: 8px;
+  max-width: 700px;
+  margin: auto;
+}
+
+.key {
+  padding: 15px;
+  font-size: 16px;
+  font-weight: bold;
+  background: #818384;
+  color: white;
+  border-radius: 6px;
+}
+
+.key:hover {
+  opacity: 0.85;
+}
+
+.wide {
+  grid-column: span 2;
+}
+
+/* MODAL */
+/* MODAL */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.75);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* IMPORTANT: keep this BELOW modal */
+.hidden {
+  display: none !important;
+}
+
+.modal-content {
+  background: #1f1f1f;
+  padding: 30px;
+  border-radius: 16px;
+  text-align: center;
+  width: 320px;
+}
+
+#result-text {
+  margin-bottom: 20px;
+}
+
+#play-again-btn,
+#reset-btn {
+  background: #538d4e;
+  color: white;
+  padding: 12px 20px;
+  border-radius: 8px;
+  font-size: 16px;
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+  .tile {
+    width: 48px;
+    height: 48px;
+    font-size: 22px;
+  }
+
+  .board {
+    grid-template-columns: repeat(5, 48px);
+  }
+
+  .keyboard {
+    grid-template-columns: repeat(7, 1fr);
+  }
+}
+
+#dictionary-panel {
+  margin-top: 30px;
   background: #1f1f1f;
   padding: 20px;
-  border-radius: 12px;
-  box-shadow: 0 0 10px rgba(255,255,255,0.05);
+  border-radius: 16px;
+  text-align: left;
 }
 
-.card h3 {
+#dictionary-panel h2 {
   margin-top: 0;
-  text-transform: uppercase;
+  text-align: center;
+}
+
+.meaning-card {
+  background: #2a2a2a;
+  padding: 15px;
+  margin-top: 12px;
+  border-radius: 10px;
+}
+
+.meaning-card h3 {
+  margin: 0 0 8px 0;
+}
+
+#meanings {
+  margin: 20px 0;
+  text-align: left;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.meaning-card {
+  background: #2a2a2a;
+  padding: 12px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.meaning-card h3 {
+  margin: 0 0 5px 0;
 }
