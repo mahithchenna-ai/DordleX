@@ -1,115 +1,44 @@
-# 🟩 DordleX – Smart Dual Word Puzzle
+# DordleX 🎮📖
 
-## 📌 Project Overview
+DordleX is an API-powered dual word puzzle game inspired by Dordle/Wordle.
+Players must solve **two 5-letter words simultaneously** within **6 attempts**.
 
-DordleX is a web-based word puzzle game inspired by Dordle, where players attempt to guess two hidden five-letter words simultaneously within a limited number of attempts. The application combines gameplay with learning by integrating public APIs to provide word meanings, hints, and word exploration features.
+## ✨ Features
+- 🎮 Dual-board Dordle gameplay
+- ⌨️ Virtual + physical keyboard support
+- 🎨 Real-time tile coloring feedback
+- 📖 Dictionary meanings shown after game ends
+- 🔁 Reset + Play Again functionality
+- 📊 Round tracker
+- 📱 Responsive design
+- 🌐 API-powered random words + dictionary meanings
 
----
-
-## 🎯 Purpose
-
-The goal of this project is to demonstrate:
-
-* JavaScript fundamentals and problem-solving logic
-* Integration of public APIs using `fetch`
-* Use of array higher-order functions (`map`, `filter`, `sort`)
-* Dynamic UI rendering and responsive design
-
----
+## 🛠️ Tech Stack
+- HTML
+- CSS
+- JavaScript
+- Random Word API
+- Dictionary API
 
 ## 🌐 APIs Used
+- Random words: `https://random-word-api.herokuapp.com/`
+- Dictionary meanings: `https://api.dictionaryapi.dev/`
 
-### 1. Datamuse API
+## 🚀 Deployment
+Deployed on: **Vercel / Netlify / GitHub Pages**
 
-Used for:
+Live Link: `PASTE_YOUR_LINK_HERE`
 
-* Fetching valid English words
-* Generating word lists for the game
-* Providing hints (related words, synonyms)
+## 📸 Screenshots
+Add gameplay screenshots here.
 
-🔗 https://api.datamuse.com
+## 📚 Learning Outcomes
+- DOM manipulation
+- Async JavaScript + fetch
+- API integration
+- Grid-based game logic
+- State management
+- Responsive UI design
 
----
-
-### 2. Dictionary API
-
-Used for:
-
-* Fetching word meanings
-* Example usage
-* Part of speech
-
-🔗 https://dictionaryapi.dev
-
----
-
-## 🎮 Features
-
-### 🟩 Core Gameplay
-
-* Dual word guessing system (Dordle-style)
-* 6 attempts to guess both words
-* Real-time feedback:
-
-  * 🟩 Correct letter & position
-  * 🟨 Correct letter, wrong position
-  * ⬜ Incorrect letter
-
----
-
-### 🌐 API-Powered Features
-
-* Dynamic word generation using Datamuse API
-* Word meanings displayed after game completion
-* Smart hint system using related words
-
----
-
-### ⚙️ Required Functionalities
-
-* 🔍 Search: Look up any word and fetch its meaning
-* 🎛️ Filter: Filter words by length or difficulty
-* 🔃 Sort: Sort words alphabetically or by complexity
-
-(All implemented using JavaScript array higher-order functions)
-
----
-
-### ❤️ Additional Features
-
-* Save favorite/learned words using localStorage
-* Responsive UI for mobile and desktop
-* Loading states for API calls
-
----
-
-## 🛠️ Technologies Used
-
-* HTML
-* CSS (Tailwind CSS optional)
-* JavaScript (ES6+)
-* Fetch API
-
----
-
-## 🚀 How to Run
-
-1. Clone the repository
-2. Open `index.html` in your browser
-3. Start playing DordleX
-
----
-
-## 💡 Future Improvements
-
-* Add difficulty levels
-* Add leaderboard system
-* Improve animations and transitions
-* Add daily challenge mode
-* Add different versions of the game
-
----
-
-## ✨ Final Note
-
-DordleX is designed to be more than just a game. It combines logic, interactivity, and real-world data to create an engaging and educational user experience.
+## 👨‍💻 Author
+Mahith Chenna
