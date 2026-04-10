@@ -21,6 +21,11 @@ const resetBtn = document.getElementById("reset-btn");
 const playAgainBtn = document.getElementById("play-again-btn");
 const meaningsDiv = document.getElementById("meanings");
 
+// Instructions Elements
+const instructionsModal = document.getElementById("instructions-modal");
+const infoBtn = document.getElementById("info-btn");
+const closeInstructionsBtn = document.getElementById("close-instructions-btn");
+
 // Tabs & Dictionary Elements
 const tabGame = document.getElementById("tab-game");
 const tabDict = document.getElementById("tab-dict");
@@ -283,6 +288,14 @@ document.addEventListener("keydown", (e) => {
 
 resetBtn.addEventListener("click", startGame);
 playAgainBtn.addEventListener("click", startGame);
+
+// Instructions Modal
+infoBtn.addEventListener("click", () => {
+  instructionsModal.classList.remove("hidden");
+});
+closeInstructionsBtn.addEventListener("click", () => {
+  instructionsModal.classList.add("hidden");
+});
 
 // Tabs Logic
 tabGame.addEventListener("click", () => {

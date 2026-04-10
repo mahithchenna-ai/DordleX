@@ -198,6 +198,71 @@ button:active {
   width: 320px;
 }
 
+button.icon-btn {
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  font-size: 28px;
+  padding: 0;
+  margin-left: 10px;
+  vertical-align: text-bottom;
+}
+button.icon-btn:active {
+  transform: scale(0.9);
+  box-shadow: none;
+}
+
+.instructions-content {
+  width: 400px;
+  text-align: left;
+  position: relative;
+}
+
+.instructions-content h2 {
+  text-align: center;
+  margin-top: 0;
+  margin-bottom: 20px;
+}
+
+button.close-btn {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  font-size: 20px;
+  cursor: pointer;
+  padding: 0;
+}
+button.close-btn:active {
+  transform: scale(0.9);
+  box-shadow: none;
+}
+
+.example-board {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin: 20px 0;
+}
+
+.example-board .tile {
+  width: 45px;
+  height: 45px;
+  font-size: 22px;
+}
+
+.instructions-text {
+  margin-top: 20px;
+}
+
+.instructions-text p {
+  font-size: 15px;
+  line-height: 1.5;
+  margin: 10px 0;
+}
+
 #result-text {
   margin-bottom: 20px;
 }

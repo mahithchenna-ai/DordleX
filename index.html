@@ -11,7 +11,7 @@
     
     <!-- HEADER -->
     <header>
-      <h1>DordleX</h1>
+      <h1>DordleX <button id="info-btn" class="icon-btn">❓</button></h1>
       <p class="subtitle">API-powered dual word puzzle</p>
     </header>
 
@@ -71,6 +71,30 @@
 
   <button id="play-again-btn">Play Again</button>
 </div>
+  </div>
+
+  <!-- INSTRUCTIONS MODAL -->
+  <div id="instructions-modal" class="modal hidden">
+    <div class="modal-content instructions-content">
+      <button id="close-instructions-btn" class="close-btn">✖</button>
+      <h2>How to play</h2>
+      <p>You have to guess 2 hidden words in 6 tries and the color of the letters changes to show how close you are.</p>
+      <p>To start the game, just enter any word, for example:</p>
+      
+      <div class="example-board">
+        <div class="tile">T</div>
+        <div class="tile present">A</div>
+        <div class="tile">B</div>
+        <div class="tile present">L</div>
+        <div class="tile correct">E</div>
+      </div>
+      
+      <div class="instructions-text">
+        <p><strong>T</strong>, <strong>B</strong> aren't in the target word at all.</p>
+        <p><strong>A</strong>, <strong>L</strong> is in the word but in the wrong spot.</p>
+        <p><strong>E</strong> is in the word and in the correct spot.</p>
+      </div>
+    </div>
   </div>
 
   <script src="script.js"></script>
