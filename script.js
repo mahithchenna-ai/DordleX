@@ -212,8 +212,6 @@ async function submitGuess() {
   }
 
   currentRow++;
-  roundsPlayed++;
-  roundsText.textContent = `Rounds Played: ${roundsPlayed}`;
 
   if (currentRow >= MAX_ATTEMPTS) {
     endGame(`❌ Game Over! Words: ${targetWords[0]}, ${targetWords[1]}`);
@@ -229,6 +227,8 @@ async function submitGuess() {
 // ===============================
 function endGame(message) {
   gameOver = true;
+  roundsPlayed++;
+  roundsText.textContent = `Rounds Played: ${roundsPlayed}`;
   resultText.textContent = message;
   resultModal.classList.remove("hidden");
 
@@ -262,8 +262,6 @@ async function startGame() {
   currentGuess = "";
   currentRow = 0;
   gameOver = false;
-  roundsPlayed = 0;
-  roundsText.textContent = "Rounds Played: 0";
 
   targetWords = await fetchWords();
 

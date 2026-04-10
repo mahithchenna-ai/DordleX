@@ -60,6 +60,12 @@ h1 {
   margin-bottom: 25px;
 }
 
+.action-buttons {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
 #rounds {
   font-size: 18px;
   font-weight: bold;
