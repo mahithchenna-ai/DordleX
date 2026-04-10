@@ -15,6 +15,14 @@
       <p class="subtitle">API-powered dual word puzzle</p>
     </header>
 
+    <!-- TABS -->
+    <div class="tabs">
+      <button id="tab-game" class="tab-btn active">Play DordleX</button>
+      <button id="tab-dict" class="tab-btn">Dictionary</button>
+    </div>
+
+    <!-- GAME BLOCK -->
+    <div id="game-section">
     <!-- GAME INFO -->
     <div class="game-info">
       <span id="rounds">Rounds Played: 0</span>
@@ -35,11 +43,23 @@
 
       <!-- KEYBOARD -->
       <div class="keyboard" id="keyboard"></div>
-      
+          </div>
+    </div> <!-- END GAME BLOCK -->
 
+    <!-- DICTIONARY BLOCK -->
+    <div id="dict-section" class="hidden">
+      <h2>Word Dictionary</h2>
+      <div class="dict-search-box">
+        <input type="text" id="dict-input" placeholder="Type a word..." maxlength="20" />
+        <button id="dict-btn">Search</button>
+      </div>
+      <div id="dict-result"></div>
     </div>
 
   </div>
+
+  <!-- ERROR TOAST -->
+  <div id="toast" class="hidden"></div>
 
   <!-- RESULT MODAL -->
   <div id="result-modal" class="modal hidden">

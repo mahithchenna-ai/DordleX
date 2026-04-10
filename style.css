@@ -1,8 +1,8 @@
 body {
   margin: 0;
   font-family: Arial, sans-serif;
-  background: #121213;
-  color: white;
+  background: #FFF8E7; /* Light warm background */
+  color: #111; /* Dark text */
 }
 
 .container {
@@ -14,13 +14,42 @@ body {
 
 /* HEADER */
 h1 {
-  font-size: 3rem;
+  font-size: 3.5rem;
   margin-bottom: 5px;
+  color: #A2D2FF; /* Pastel blue */
+  -webkit-text-stroke: 2px #000;
+  text-shadow: 4px 4px 0px #000;
+  letter-spacing: 2px;
 }
 
 .subtitle {
-  opacity: 0.7;
+  font-weight: bold;
   margin-bottom: 20px;
+}
+
+/* NEW TABS */
+.tabs {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 25px;
+}
+
+.tab-btn {
+  background: white;
+  border: 3px solid #000;
+  box-shadow: 4px 4px 0px #000;
+  padding: 10px 20px;
+  font-weight: bold;
+  font-size: 16px;
+  border-radius: 8px;
+  transition: 0.1s;
+}
+
+.tab-btn.active {
+  background: #FFAFCC; /* Pastel pink */
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0px #000;
 }
 
 /* GAME INFO */
@@ -38,7 +67,17 @@ h1 {
 
 button {
   cursor: pointer;
-  border: none;
+  border: 3px solid #000;
+  box-shadow: 4px 4px 0px #000;
+  border-radius: 8px;
+  font-weight: bold;
+  background: white;
+  transition: 0.1s;
+}
+
+button:active {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0px #000;
 }
 
 /* LOADING */
@@ -70,30 +109,30 @@ button {
 .tile {
   width: 60px;
   height: 60px;
-  border: 2px solid #3a3a3c;
+  border: 3px solid #000;
+  box-shadow: 4px 4px 0px #000;
+  border-radius: 8px;
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 28px;
   font-weight: bold;
   text-transform: uppercase;
-  background: #121213;
-  transition: 0.3s;
+  background: #FFFFFF;
+  color: #000;
+  transition: 0.2s;
 }
 
 .correct {
-  background: #538d4e;
-  border-color: #538d4e;
+  background: #6EEB83; /* Vibrant green */
 }
 
 .present {
-  background: #b59f3b;
-  border-color: #b59f3b;
+  background: #FFD166; /* Vibrant yellow */
 }
 
 .absent {
-  background: #3a3a3c;
-  border-color: #3a3a3c;
+  background: #A3A3A3; /* Solid gray */
 }
 
 /* KEYBOARD */
@@ -109,13 +148,20 @@ button {
   padding: 15px;
   font-size: 16px;
   font-weight: bold;
-  background: #818384;
-  color: white;
-  border-radius: 6px;
+  background: #FFFFFF;
+  color: #000;
+  border: 3px solid #000;
+  border-radius: 8px;
+  box-shadow: 3px 3px 0px #000;
 }
 
 .key:hover {
-  opacity: 0.85;
+  background: #E8E8E8;
+}
+
+.key:active {
+  transform: translate(2px, 2px);
+  box-shadow: 1px 1px 0px #000;
 }
 
 .wide {
@@ -142,7 +188,10 @@ button {
 }
 
 .modal-content {
-  background: #1f1f1f;
+  background: #FFF8E7; /* Light background */
+  border: 4px solid #000;
+  box-shadow: 8px 8px 0px #000;
+  color: #000;
   padding: 30px;
   border-radius: 16px;
   text-align: center;
@@ -153,12 +202,14 @@ button {
   margin-bottom: 20px;
 }
 
-#play-again-btn,
 #reset-btn {
-  background: #538d4e;
-  color: white;
+  background: #FFD166; /* Vibrant yellow */
+  padding: 10px 20px;
+}
+
+#play-again-btn {
+  background: #6EEB83; /* Vibrant green */
   padding: 12px 20px;
-  border-radius: 8px;
   font-size: 16px;
 }
 
@@ -179,44 +230,75 @@ button {
   }
 }
 
-#dictionary-panel {
-  margin-top: 30px;
-  background: #1f1f1f;
-  padding: 20px;
-  border-radius: 16px;
-  text-align: left;
+/* TOAST NOTIFICATION */
+#toast {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #FF9AA2; /* Pastel Red */
+  color: #000;
+  padding: 12px 24px;
+  border: 3px solid #000;
+  border-radius: 8px;
+  font-weight: bold;
+  box-shadow: 4px 4px 0px #000;
+  z-index: 1000;
+  transition: opacity 0.3s;
 }
 
-#dictionary-panel h2 {
-  margin-top: 0;
+/* DICTIONARY STYLES */
+#dict-section {
+  max-width: 600px;
+  margin: 0 auto;
   text-align: center;
 }
 
-.meaning-card {
-  background: #2a2a2a;
-  padding: 15px;
-  margin-top: 12px;
-  border-radius: 10px;
+.dict-search-box {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 30px;
 }
 
-.meaning-card h3 {
-  margin: 0 0 8px 0;
+#dict-input {
+  padding: 12px 20px;
+  font-size: 18px;
+  border: 3px solid #000;
+  border-radius: 8px;
+  box-shadow: 4px 4px 0px #000;
+  outline: none;
+  font-weight: bold;
+  flex: 1;
+}
+
+#dict-btn {
+  background: #A2D2FF; /* Pastel blue */
+  padding: 12px 25px;
+  font-size: 18px;
+}
+
+#dict-result {
+  text-align: left;
 }
 
 #meanings {
   margin: 20px 0;
   text-align: left;
-  max-height: 200px;
+  max-height: 250px;
   overflow-y: auto;
 }
 
 .meaning-card {
-  background: #2a2a2a;
-  padding: 12px;
-  border-radius: 10px;
-  margin-bottom: 10px;
+  background: #CDB4DB; /* Pastel purple */
+  padding: 20px;
+  border-radius: 12px;
+  border: 3px solid #000;
+  box-shadow: 6px 6px 0px #000;
+  margin: 15px auto;
+  color: #000;
 }
-
 .meaning-card h3 {
-  margin: 0 0 5px 0;
+  margin-top: 0;
+  font-size: 24px;
 }

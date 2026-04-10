@@ -7,6 +7,7 @@ let currentGuess = "";
 let currentRow = 0;
 let roundsPlayed = 0;
 let gameOver = false;
+let isChecking = false;
 
 const board1 = document.getElementById("board1");
 const board2 = document.getElementById("board2");
@@ -18,17 +19,45 @@ const resultModal = document.getElementById("result-modal");
 const resultText = document.getElementById("result-text");
 const resetBtn = document.getElementById("reset-btn");
 const playAgainBtn = document.getElementById("play-again-btn");
-const dictionaryPanel = document.getElementById("dictionary-panel");
 const meaningsDiv = document.getElementById("meanings");
+
+// Tabs & Dictionary Elements
+const tabGame = document.getElementById("tab-game");
+const tabDict = document.getElementById("tab-dict");
+const gameSection = document.getElementById("game-section");
+const dictSection = document.getElementById("dict-section");
+const dictInput = document.getElementById("dict-input");
+const dictBtn = document.getElementById("dict-btn");
+const dictResult = document.getElementById("dict-result");
+const toast = document.getElementById("toast");
 
 // ===============================
 // FETCH 2 RANDOM WORDS
 // ===============================
 async function fetchWords() {
-  const response = await fetch("https://random-word-api.herokuapp.com/word?number=20&length=5");
-  const data = await response.json();
+  try {
+    const response = await fetch("https://api.datamuse.com/words?sp=?????&max=1000");
+    const data = await response.json();
 
-  return [data[0].toUpperCase(), data[1].toUpperCase()];
+    // Pick 2 random words from the returned list
+    const word1 = data[Math.floor(Math.random() * data.length)].word;
+    const word2 = data[Math.floor(Math.random() * data.length)].word;
+
+    return [word1.toUpperCase(), word2.toUpperCase()];
+  } catch (err) {
+    console.error("Failed to fetch words:", err);
+    // Reliable fallback so the game never gets stuck loading forever
+    return ["SMART", "BRAIN"];
+  }
+}
+
+async function checkValidWord(word) {
+  try {
+    const response = await fetch("https://api.dictionaryapi.dev/api/v2/entries/en/" + word.toLowerCase());
+    return response.ok;
+  } catch {
+    return false;
+  }
 }
 
 async function fetchMeaning(word) {
@@ -143,11 +172,28 @@ function colorBoard(board, target) {
 }
 
 
+function showToast(message) {
+  toast.textContent = message;
+  toast.classList.remove("hidden");
+  setTimeout(() => {
+    toast.classList.add("hidden");
+  }, 2000);
+}
+
 // ===============================
 // SUBMIT GUESS
 // ===============================
-function submitGuess() {
-  if (gameOver || currentGuess.length !== WORD_LENGTH) return;
+async function submitGuess() {
+  if (gameOver || currentGuess.length !== WORD_LENGTH || isChecking) return;
+
+  isChecking = true;
+  const isValid = await checkValidWord(currentGuess);
+  isChecking = false;
+
+  if (!isValid) {
+    showToast("Not a valid word!");
+    return;
+  }
 
   colorBoard(board1, targetWords[0]);
   colorBoard(board2, targetWords[1]);
@@ -229,6 +275,7 @@ async function startGame() {
 // EVENTS
 // ===============================
 document.addEventListener("keydown", (e) => {
+  if (gameSection.classList.contains("hidden")) return;
   if (e.key === "Enter") submitGuess();
   else if (e.key === "Backspace") deleteLetter();
   else if (/^[a-zA-Z]$/.test(e.key)) handleInput(e.key.toUpperCase());
@@ -236,6 +283,41 @@ document.addEventListener("keydown", (e) => {
 
 resetBtn.addEventListener("click", startGame);
 playAgainBtn.addEventListener("click", startGame);
+
+// Tabs Logic
+tabGame.addEventListener("click", () => {
+  tabGame.classList.add("active");
+  tabDict.classList.remove("active");
+  gameSection.classList.remove("hidden");
+  dictSection.classList.add("hidden");
+});
+
+tabDict.addEventListener("click", () => {
+  tabDict.classList.add("active");
+  tabGame.classList.remove("active");
+  dictSection.classList.remove("hidden");
+  gameSection.classList.add("hidden");
+});
+
+// Dictionary Search
+dictBtn.addEventListener("click", async () => {
+  const word = dictInput.value.trim();
+  if (!word) return;
+  
+  dictResult.innerHTML = "<p>Searching...</p>";
+  const meaning = await fetchMeaning(word);
+  
+  dictResult.innerHTML = `
+    <div class="meaning-card">
+      <h3>${word.toUpperCase()}</h3>
+      <p>${meaning}</p>
+    </div>
+  `;
+});
+
+dictInput.addEventListener("keydown", (e) => {
+  if (e.key === "Enter") dictBtn.click();
+});
 
 
 // ===============================
